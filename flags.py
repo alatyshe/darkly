@@ -1,9 +1,9 @@
 import os
 import subprocess
-import sys
+import argparse
 
 
-def run(host_name):
+def run(host):
     directory = os.getcwd()
     folders = os.listdir(directory)
     folders.sort()
@@ -11,13 +11,15 @@ def run(host_name):
     for folder in folders:
         if not folder.startswith('.') and folder != 'flags.py' and not folder.startswith('06'):
             os.chdir(os.path.join(os.getcwd(), folder, 'resources'))
-            subprocess.call('python3 script.py {host}'.format(host=host_name), shell=True)
+            subprocess.call('python3 script.py {host}'.format(host=host), shell=True)
             os.chdir(directory)
 
 
 if __name__ == '__main__':
     try:
-        host_name = sys.argv[1]
-        run(host_name=host_name)
+        ap = argparse.ArgumentParser()
+        ap.add_argument("-H", "--host", required=True, help="Your have to set hostname. For example: 192.168.1.79")
+
+        run(**vars(ap.parse_args()))
     except Exception as e:
         print(e.args)

