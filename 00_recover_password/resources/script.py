@@ -20,7 +20,7 @@ def get_flag(host_name, email):
     if response.status_code == 200:
         with open('../flag', 'w') as f:
             flag = BeautifulSoup(response.text, 'html.parser').find('h2').text.split(':')[-1].strip()
-            f.write(flag)
+            f.write(flag+'\n')
     return flag
 
 
