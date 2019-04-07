@@ -36,7 +36,7 @@ if __name__ == '__main__':
         username = sys.argv[2] if len(sys.argv) == 3 else 'roman'
 
         if check_host_name(host_name):
-            print(get_flag(host_name, username))
+            print(f"05 : {get_flag(host_name, username)} - feedback form http://{host_name}/?page=feedback")
         else:
             raise Exception('Incorrect host name')
     except Exception as e:

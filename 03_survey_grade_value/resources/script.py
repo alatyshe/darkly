@@ -36,7 +36,7 @@ if __name__ == '__main__':
         value = sys.argv[2] if len(sys.argv) == 3 else '10000'
 
         if check_host_name(host_name):
-            print(get_flag(host_name, value))
+            print(f"03 : {get_flag(host_name, value)} - survey grade value http://{host_name}/?page=survey")
         else:
             raise Exception('Incorrect host name')
     except Exception as e:

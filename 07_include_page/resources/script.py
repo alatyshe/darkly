@@ -33,7 +33,7 @@ if __name__ == '__main__':
         host_name = sys.argv[1]
 
         if check_host_name(host_name):
-            print(get_flag(host_name))
+            print(f"07 : {get_flag(host_name)} - include page http://{host_name}/index.php?page=../../../../../../../etc/passwd")
         else:
             raise Exception('Incorrect host name')
     except Exception as e:

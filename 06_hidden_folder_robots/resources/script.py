@@ -6,9 +6,10 @@ import sys
 def get_content(url):
 	with open('content.txt', 'a+') as f:
 		for link in BeautifulSoup(requests.get(url=url).text, 'html.parser').find_all('a'):
+			print("FUCK ")
 			if link.get('href') == 'README':
 				content = requests.get(url=url+'/'+link.get('href')).content.decode('utf-8').strip()
-				print(content)
+				print("FUCK ", content)
 				f.write(content+'\n')
 			if not link.get('href').startswith('../'):
 				get_content(url+'/'+link.get('href'))

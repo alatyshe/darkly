@@ -32,7 +32,7 @@ if __name__ == '__main__':
         redirect = sys.argv[2] if len(sys.argv) == 3 else 'google'
 
         if check_host_name(host_name):
-            print(get_flag(host_name, redirect))
+            print(f"01 : {get_flag(host_name, redirect)} - redirect http://{host_name}/index.php?page=redirect&site={redirect}")
         else:
             raise Exception('Incorrect host name')
     except Exception as e:

@@ -50,7 +50,7 @@ if __name__ == '__main__':
         file = sys.argv[2] if len(sys.argv) == 3 else 'passwords.txt'
 
         if check_host_name(host_name):
-            print(brute(host_name, file))
+            print(f"12 : {brute(host_name, file)} - brute force http://{host_name}/?page=signin/")
         else:
             raise Exception('Incorrect host name')
     except Exception as e:

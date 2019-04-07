@@ -35,7 +35,7 @@ if __name__ == '__main__':
         file = sys.argv[2] if len(sys.argv) == 3 else 'petya.py'
 
         if check_host_name(host_name):
-            print(get_flag(host_name, file))
+            print(f"08 : {get_flag(host_name, file)} - file upload http://{host_name}/index.php?page=upload")
         else:
             raise Exception('Incorrect host name')
     except Exception as e:

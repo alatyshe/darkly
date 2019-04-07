@@ -37,7 +37,7 @@ if __name__ == '__main__':
         host_name = sys.argv[1]
 
         if check_host_name(host_name):
-            print(get_flag(host_name))
+            print(f"02 : {get_flag(host_name)} - cookies")
         else:
             raise Exception('Incorrect host name')
     except Exception as e:

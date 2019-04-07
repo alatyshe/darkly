@@ -34,7 +34,7 @@ if __name__ == '__main__':
         email = sys.argv[2] if len(sys.argv) == 3 else 'romangadyatskiy@gmail.com'
 
         if check_host_name(host_name):
-            print(get_flag(host_name, email))
+            print(f"00 : {get_flag(host_name, email)} - recover_password http://{host_name}/?page=recover")
         else:
             raise Exception('Incorrect host name')
     except Exception as e:

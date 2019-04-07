@@ -41,7 +41,7 @@ if __name__ == '__main__':
         if check_host_name(host_name):
             username, passwd = get_login_passwd(host_name)
             # print('username: {}\npassword: {}'.format(username, passwd))
-            print(get_flag(host_name, username, 'dragon'))
+            print(f"11 : {get_flag(host_name, username, 'dragon')} - htpasswd admin http://{host_name}/whatever/")
         else:
             raise Exception('Incorrect host name')
     except Exception as e:
